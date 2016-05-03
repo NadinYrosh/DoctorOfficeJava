@@ -35,4 +35,14 @@ public class Doctor {
              this.getId() == newDoctor.getId();
     }
   }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO Doctors(doctor_name) VALUES (:doctor_name)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("doctor_name", this.doctor_name)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 }
