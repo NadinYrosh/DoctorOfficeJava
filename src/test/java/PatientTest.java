@@ -46,13 +46,13 @@ public class PatientTest {
     assertEquals(myPatient.getId(), savedPatient.getId());
   }
 
-  // @Test
-  // public void find_findsPatientInDatabase_True() {
-  //   Patient myPatient = new Patient("Merry", 1);
-  //   myPatient.save();
-  //   Patient savedPatient = Patient.find(myPatient.getId());
-  //   assertTrue(myPatient.equals(savedPatient));
-  // }
+  @Test
+  public void find_findsPatientInDatabase_True() {
+    Patient myPatient = new Patient("Merry", 1);
+    myPatient.save();
+    Patient savedPatient = Patient.find(myPatient.getId());
+    assertTrue(myPatient.equals(savedPatient));
+  }
 
 
 }

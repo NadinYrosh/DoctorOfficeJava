@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class SpecialtyTest {
   // @Before
   // public void setUp() {
-  //   DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctor_office_test", null, null);
+  //   DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctor_test", null, null);
   // }
   //
   // @After
@@ -21,9 +21,9 @@ public class SpecialtyTest {
   //   }
   // }
 
-  // @Test
-  // public void specialty_instantiatesCorrectly_true() {
-  //   Specialty testSpecialty = new Specialty("dentist");
-  //   assertEquals(true, testSpecialty instanceof Specialty);
-  // }
+  @Test
+  public void specialty_instantiatesCorrectly_true() {
+    Specialty testSpecialty = new Specialty("dentist");
+    assertEquals(true, testSpecialty instanceof Specialty);
+  }
 }
