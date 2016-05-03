@@ -9,4 +9,8 @@ public class Doctor {
   public Doctor(String doctor_name) {
     this.doctor_name = doctor_name;
   }
+
+  public String getName() {
+    return doctor_name;
+  }
 }

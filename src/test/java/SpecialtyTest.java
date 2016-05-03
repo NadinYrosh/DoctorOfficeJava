@@ -3,7 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.Arrays;
 
-public class DoctorTest {
+public class SpecialtyTest {
   // @Before
   // public void setUp() {
   //   DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctor_office_test", null, null);
@@ -21,15 +21,9 @@ public class DoctorTest {
   //   }
   // }
 
-  @Test
-  public void doctor_instantiatesCorrectly_true() {
-    Doctor testDoctor = new Doctor("Jake");
-    assertEquals(true, testDoctor instanceof Doctor);
-  }
-
-  @Test
-  public void getName_doctorInstantiatesNameCorrectly_string() {
-    Doctor testDoctor = new Doctor("Jake");
-    assertEquals("Jake", testDoctor.getName());
-  }
+  // @Test
+  // public void specialty_instantiatesCorrectly_true() {
+  //   Specialty testSpecialty = new Specialty("dentist");
+  //   assertEquals(true, testSpecialty instanceof Specialty);
+  // }
 }
