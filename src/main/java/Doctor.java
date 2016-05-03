@@ -5,9 +5,11 @@ import org.sql2o.*;
 public class Doctor {
   private int id;
   private String doctor_name;
+  private int patient_id;
 
-  public Doctor(String doctor_name) {
+  public Doctor(String doctor_name, int patient_id) {
     this.doctor_name = doctor_name;
+    this.patient_id = patient_id;
   }
 
   public String getName() {
@@ -45,4 +47,14 @@ public class Doctor {
         .getKey();
     }
   }
+
+  public static Doctor find(int id) {
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "SELECT * FROM doctors WHERE id=:id";
+     Doctor doctor = con.createQuery(sql)
+       .addParameter("id", id)
+       .executeAndFetchFirst(Doctor.class);
+     return doctor;
+   }
+ }
 }

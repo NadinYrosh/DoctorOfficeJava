@@ -23,13 +23,13 @@ public class DoctorTest {
 
   @Test
   public void doctor_instantiatesCorrectly_true() {
-    Doctor testDoctor = new Doctor("Jake");
+    Doctor testDoctor = new Doctor("Jake", 1);
     assertEquals(true, testDoctor instanceof Doctor);
   }
 
   @Test
   public void getName_doctorInstantiatesNameCorrectly_string() {
-    Doctor testDoctor = new Doctor("Jake");
+    Doctor testDoctor = new Doctor("Jake", 1);
     assertEquals("Jake", testDoctor.getName());
   }
 
@@ -40,15 +40,31 @@ public class DoctorTest {
 
   @Test
   public void  equals_returnsTrueIfNamesAreTheSame_true() {
-    Doctor firstDoctor = new Doctor("Jake");
-    Doctor secondDoctor = new Doctor("Jake");
+    Doctor firstDoctor = new Doctor("Jake", 1);
+    Doctor secondDoctor = new Doctor("Jake", 1);
     assertTrue(firstDoctor.equals(secondDoctor));
   }
 
   @Test
   public void save_savesIntoDatabase_true() {
-    Doctor testDoctor = new Doctor("Jake");
+    Doctor testDoctor = new Doctor("Jake", 1);
     testDoctor.save();
     assertTrue(Doctor.all().get(0).equals(testDoctor));
   }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Doctor testDoctor = new Doctor("Jake", 1);
+    testDoctor.save();
+    Doctor savedDoctor = Doctor.all().get(0);
+    assertEquals(testDoctor.getId(), savedDoctor.getId());
+  }
+
+  @Test
+ public void find_findDoctorInDatabase_true() {
+   Doctor testDoctor = new Doctor("Jake", 1);
+   testDoctor.save();
+   Doctor savedDoctor = Doctor.find(testDoctor.getId());
+   assertTrue(testDoctor.equals(savedDoctor));
+ }
 }
