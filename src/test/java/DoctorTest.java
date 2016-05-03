@@ -13,11 +13,11 @@ public class DoctorTest {
   public void tearDown() {
     try(Connection con = DB.sql2o.open()) {
       String deleteDoctorsQuery = "DELETE FROM Doctors *;";
-      // String deletePatientsQuery = "DELETE FROM patients *;";
-      // String deleteSpecialtiesQuery = "DELETE FROM specialties *;";
+      String deletePatientsQuery = "DELETE FROM patients *;";
+      String deleteSpecialtiesQuery = "DELETE FROM specialties *;";
       con.createQuery(deleteDoctorsQuery).executeUpdate();
-      // con.createQuery(deletePatientsQuery).executeUpdate();
-      // con.createQuery(deleteSpecialtiesQuery).executeUpdate();
+      con.createQuery(deletePatientsQuery).executeUpdate();
+      con.createQuery(deleteSpecialtiesQuery).executeUpdate();
     }
   }
 
@@ -33,9 +33,15 @@ public class DoctorTest {
     assertEquals("Jake", testDoctor.getName());
   }
 
-
   @Test
   public void all_emptyAtFirst() {
     assertEquals(Doctor.all().size(), 0);
+  }
+
+  @Test
+  public void  equals_returnsTrueIfNamesAreTheSame_true() {
+    Doctor firstDoctor = new Doctor("Jake");
+    Doctor secondDoctor = new Doctor("Jake");
+    assertTrue(firstDoctor.equals(secondDoctor));
   }
 }
