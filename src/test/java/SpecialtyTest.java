@@ -23,7 +23,7 @@ public class SpecialtyTest {
 
   @Test
   public void specialty_instantiatesCorrectly_true() {
-    Specialty testSpecialty = new Specialty("dentist");
+    Specialty testSpecialty = new Specialty("dentist", 1);
     assertEquals(true, testSpecialty instanceof Specialty);
   }
 }
