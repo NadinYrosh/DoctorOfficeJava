@@ -4,22 +4,22 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 
 public class PatientTest {
-  // @Before
-  // public void setUp() {
-  //   DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctor_office_test", null, null);
-  // }
-  //
-  // @After
-  // public void tearDown() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String deleteDoctorsQuery = "DELETE FROM doctors *;";
-  //     String deletePatientsQuery = "DELETE FROM patients *;";
-  //     String deleteSpecialtiesQuery = "DELETE FROM specialties *;";
-  //     con.createQuery(deleteDoctorsQuery).executeUpdate();
-  //     con.createQuery(deletePatientsQuery).executeUpdate();
-  //     con.createQuery(deleteSpecialtiesQuery).executeUpdate();
-  //   }
-  // }
+  @Before
+  public void setUp() {
+    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctor_test", null, null);
+  }
+
+  @After
+  public void tearDown() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteDoctorsQuery = "DELETE FROM doctors *;";
+      String deletePatientsQuery = "DELETE FROM patients *;";
+      String deleteSpecialtiesQuery = "DELETE FROM specialties *;";
+      con.createQuery(deleteDoctorsQuery).executeUpdate();
+      con.createQuery(deletePatientsQuery).executeUpdate();
+      con.createQuery(deleteSpecialtiesQuery).executeUpdate();
+    }
+  }
 
   @Test
   public void patient_instantiatesCorrectly_true() {
@@ -37,5 +37,22 @@ public class PatientTest {
   public void all_emptyAtFirst() {
     assertEquals(Patient.all().size(), 0);
   }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Patient myPatient = new Patient("Merry", 1);
+    myPatient.save();
+    Patient savedPatient = Patient.all().get(0);
+    assertEquals(myPatient.getId(), savedPatient.getId());
+  }
+
+  // @Test
+  // public void find_findsPatientInDatabase_True() {
+  //   Patient myPatient = new Patient("Merry", 1);
+  //   myPatient.save();
+  //   Patient savedPatient = Patient.find(myPatient.getId());
+  //   assertTrue(myPatient.equals(savedPatient));
+  // }
+
 
 }
