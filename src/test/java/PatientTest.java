@@ -21,9 +21,21 @@ public class PatientTest {
   //   }
   // }
 
-  // @Test
-  // public void patient_instantiatesCorrectly_true() {
-  //   Patient testPatient = new Patient("Bob");
-  //   assertEquals(true, testPatient instanceof Patient);
-  // }
+  @Test
+  public void patient_instantiatesCorrectly_true() {
+    Patient testPatient = new Patient("Bob", 1);
+    assertEquals(true, testPatient instanceof Patient);
+  }
+
+  @Test
+  public void getName_patientWithName_String(){
+    Patient myPatient = new Patient("Merry", 1);
+    assertEquals("Merry", myPatient.getName());
+  }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Patient.all().size(), 0);
+  }
+
 }

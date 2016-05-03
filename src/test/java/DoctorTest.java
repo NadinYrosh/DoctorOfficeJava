@@ -61,10 +61,22 @@ public class DoctorTest {
   }
 
   @Test
- public void find_findDoctorInDatabase_true() {
+  public void find_findDoctorInDatabase_true() {
    Doctor testDoctor = new Doctor("Jake", 1);
    testDoctor.save();
    Doctor savedDoctor = Doctor.find(testDoctor.getId());
    assertTrue(testDoctor.equals(savedDoctor));
  }
+
+ // @Test
+ //  public void getDoctors_retrievesALlDoctorsFromDatabase_DoctorsList() {
+ //    Doctor myDoctor = new Doctor("Jake", 1);
+ //    myDoctor.save();
+ //    Patient firstPatient = new Patient("Merry", 1, myPatient.getId());
+ //    firstPatient.save();
+ //    Patient secondPatient = new Patient("Brian", 2, myPatient.getId());
+ //    secondPatient.save();
+ //    Patient[] patients = new Patient[] { firstPatient, secondPatient };
+ //    assertTrue(myDoctor.getPatient().containsAll(Arrays.asList(patients)));
+ //  }
 }
